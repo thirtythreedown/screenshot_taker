@@ -25,13 +25,10 @@ import keyboard
 import time
 #Importing time module (filename generation)
 
-
 from PIL import Image
-from PIL import ImageGrab ##Trying something out here
-##Importing the ImagGrab module from the PIL pillow library
-
-##timestring = time.strftime("%Y%m%d-%H%M%S") 
-##Creating timestring value and using .strftime() method from time to generate time value string
+##Importing the Image module from the PILLOW library
+from PIL import ImageGrab
+##Importing the ImagGrab module from the PILLOW library
 
 print("Welcome to the Automatic Screen Capturator 3000")
 print("Push CTRL+S anytime to capture the screen")
@@ -61,9 +58,9 @@ def file_saver(cropped_screenshot):
     ##Composing timestring and assigning to timestr variable
     ##print("The timestring is " + timestr)
     ##Printing timestring for diagnostics and giggles
-    filename = 'csc' + timestr + '.png'
+    filename = 'csc' + timestr + '.bmp'
     ##Creating filename variable and assembling filename elements
-    cropped_screenshot.save(filename)
+    cropped_screenshot.save(filename, format='bmp')
     ##Saving cropped_screenshot to folder with save() method using filename
     print("Screenshot saved at " + filename + " !")
     ##screenshot.show(filename) #Shows the screenshot, but uncropped

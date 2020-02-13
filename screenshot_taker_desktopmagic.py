@@ -2,6 +2,7 @@
 ##Filenames with date and time - https://stackoverflow.com/questions/10607688/how-to-create-a-file-name-with-the-current-date-time-in-python
 ##Keyboard presses in python outside of focused window - https://stackoverflow.com/questions/24072790/detect-key-press-in-python
 ##PILLOW documentation - https://pillow.readthedocs.io/en/3.1.x/reference/Image.html
+##DesktopMagic library - https://pypi.org/project/Desktopmagic/
 
 ##DONE
 ##Key press detection
@@ -16,8 +17,6 @@
 ##TO DO
 ##All dooooooone
 
-
-
 import os
 ##importing os module (sending to printer)
 
@@ -27,16 +26,11 @@ import keyboard
 import time
 #Importing time module (filename generation)
 
-
 from PIL import Image
-##from PIL import ImageGrab ##Trying something out here
-##Importing the ImagGrab module from the PIL pillow library
+##Importing the Image module from the PILLOW library
 
 from desktopmagic.screengrab_win32 import getRectAsImage
 ##Importing DesktopMagic module
-
-##timestring = time.strftime("%Y%m%d-%H%M%S") 
-##Creating timestring value and using .strftime() method from time to generate time value string
 
 print("Welcome to the Automatic Screen Capturator 3000")
 print("Push S anytime to capture the screen")
