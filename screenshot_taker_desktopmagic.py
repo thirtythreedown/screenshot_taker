@@ -89,7 +89,7 @@ while True:
     ##Starting try for exceptions handling
     if keyboard.is_pressed('s'):
     ##If detection: S key pres
-        screenshot = getRectAsImage((0,0,1600,900)) ##Using getRectAsImage to capture a screen
+        screenshot = getRectAsImage((0,0,1600,900)) ##Using getRectAsImage to capture a screen area on dual screen setups
         ##screenshot = ImageGrab.grab(bbox=(0,0,1920,1080)) #Appropriate dimensions for Alienware laptop
         ##screenshot = ImageGrab.grab(bbox=(0,0,1600,900)) #Appropriate dimensions for Thomas' dev laptop
         ##screenshot.show()
