@@ -57,7 +57,7 @@ def file_saver(cropped_screenshot):
     timestr = time.strftime("%Y%m%d-%H%M%S")
     ##Composing timestring and assigning to timestr variable
     ##print("The timestring is " + timestr)
-    ##Printing timestring for diagnostics and giggles
+    ##Printing timestring for diagnostics
     filename = 'csc' + timestr + '.bmp'
     ##Creating filename variable and assembling filename elements
     cropped_screenshot.save(filename, format='bmp')
@@ -74,15 +74,14 @@ def screenshot_printer(saved_screenshot):
     """Sends the screenshot to the default printer"""
     ##os.startfile(saved_screenshot, "print")
     os.system("start " + saved_screenshot) ##Loading the saved screenshot in the default Photos app
-    print("Sending screenshot to default printer !")
+    print("Screenshot ready to send to printer !")
 
 while True:
-##Starting loop
-    ##Starting try for exceptions handling
+##Starting main loop
     if keyboard.is_pressed('ctrl+s'):
     ##If detection: S key pres
         screenshot = ImageGrab.grab(bbox=(0,0,1920,1080)) #Appropriate dimensions for Alienware laptop
-        ##screenshot = ImageGrab.grab(bbox=(0,0,1600,900)) #Appropriate dimensions for Thomas' dev laptop
+        ##screenshot = ImageGrab.grab(bbox=(0,0,1600,900)) #Appropriate dimensions for Bee's dev laptop
         ##screenshot.show()
         ##Creating screenshot variable and capturing screenshot with ImageGrab.grab() method with display parameters (x origin, y origin, resolution)
         screenshot_width, screenshot_height = screenshot.size ##Getting dimensiosn
