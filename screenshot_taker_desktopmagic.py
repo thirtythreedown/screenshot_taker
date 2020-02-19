@@ -81,15 +81,13 @@ def screenshot_printer(saved_screenshot):
 while True:
 ##Starting main loop
     if keyboard.is_pressed('ctrl+s'):
-    ##If detection: S key pres
-        ##screenshot = getRectAsImage((1920,0,3840,1080)) ##Using getRectAsImage to capture the right-hand screen on a dual screen setup at 1920x1080
-        ##screenshot = ImageGrab.grab(bbox=(0,0,1920,1080)) #Appropriate dimensions for Alienware laptop
-        ##screenshot = ImageGrab.grab(bbox=(0,0,1600,900)) #Appropriate dimensions for Bee's dev laptop
+    ##If detection: CTRL+S key pres
+        screenshot = getRectAsImage((1920,0,3840,1080)) ##Using getRectAsImage to capture the right-hand screen on a dual screen setup at 1920x1080
         ##screenshot.show()
         ##Creating screenshot variable and capturing screenshot with ImageGrab.grab() method with display parameters (x origin, y origin, resolution)
         screenshot_width, screenshot_height = screenshot.size ##Getting dimensiosn
         print("Grabbing dimensions from screenshot") #Collecting dimensions from raw_screenshot content
-        ##print(raw_screenshot_width, raw_screenshot_height) #Printing the dimensions obtained from raw_screenshot just for kicks
+        print(screenshot_width, screenshot_height) #Printing the dimensions obtained from raw_screenshot just for kicks
         cropped_screenshot = screenshot_cropper(screenshot, screenshot_width, screenshot_height)
         ##Passing raw_screenshot to screenshot_cropper() function for cropping
         saved_screenshot = file_saver(cropped_screenshot)
