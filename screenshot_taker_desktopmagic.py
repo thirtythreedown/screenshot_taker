@@ -1,21 +1,7 @@
-##Screenshots with PILLOW library - https://www.simplifiedpython.net/python-screenshot/#Taking_Screenshot_UsingPillow
-##Filenames with date and time - https://stackoverflow.com/questions/10607688/how-to-create-a-file-name-with-the-current-date-time-in-python
-##Keyboard presses in python outside of focused window - https://stackoverflow.com/questions/24072790/detect-key-press-in-python
-##PILLOW documentation - https://pillow.readthedocs.io/en/3.1.x/reference/Image.html
+#! python3
+
+##PILLOW library - https://pypi.org/project/Pillow/
 ##DesktopMagic library - https://pypi.org/project/Desktopmagic/
-
-##DONE
-##Key press detection
-##Filename based on time of recording
-##Printer output
-##Picture cropping
-##General refactoring to functions
-##Testing with Alienware laptop + TV output
-##while True + clean exit loops
-##Load files with Photos app
-
-##TO DO
-##All dooooooone
 
 import os
 ##importing os module (sending to printer)
@@ -30,7 +16,7 @@ from PIL import Image
 ##Importing the Image module from the PILLOW library
 
 from desktopmagic.screengrab_win32 import getRectAsImage
-##Importing DesktopMagic module
+##Importing DesktopMagic module's getRectAsTimage
 
 print("Welcome to the Automatic Screen Capturator 3000")
 print("Push CTRL+S anytime to capture the screen")
@@ -48,8 +34,8 @@ def screenshot_cropper(screenshot, screenshot_width, screenshot_height):
     ##Defining position of bottom pixels
     cropped_screenshot_local = screenshot.crop((left, top, right, bottom))
     ##Cropping screenshot
-    ##cropped_screenshot_local.show() #This displays the picture but doesn't let us print it out :s
-    ##Displaying cropped screenshot
+    ##cropped_screenshot_local.show()
+    ##DIAGNOSTIC TOOL - Displays the cropped screenshot
     print("Screenshot cropped!")
     ##Confirming cropping
     return cropped_screenshot_local
@@ -59,7 +45,7 @@ def file_saver(cropped_screenshot):
     timestr = time.strftime("%Y%m%d-%H%M%S")
     ##Composing timestring and assigning to timestr variable
     ##print("The timestring is " + timestr)
-    ##Printing timestring for diagnostics
+    ##DIAGNOSTIC TOOL - Checking timestring content, will be used as filename ingredient later
     filename = 'csc' + timestr + '.bmp'
     ##Creating filename variable and assembling filename elements
     cropped_screenshot.save(filename, format='bmp')
@@ -74,18 +60,20 @@ def file_saver(cropped_screenshot):
 
 def screenshot_printer(saved_screenshot):
     """Sends the screenshot to the default printer"""
-    ##os.startfile(saved_screenshot, "print")
-    os.system("start " + saved_screenshot) ##Loading the saved screenshot in the default Photos app
+    os.system("start " + saved_screenshot)
+    ##Loading the saved screenshot in the default Photos app
     print("Screenshot ready to send to printer !")
 
 while True:
 ##Starting main loop
     if keyboard.is_pressed('ctrl+s'):
-    ##If detection: CTRL+S key pres
-        screenshot = getRectAsImage((1920,0,3840,1080)) ##Using getRectAsImage to capture the right-hand screen on a dual screen setup at 1920x1080
-        ##screenshot.show()
+    ##If detection: CTRL+S key press
+        screenshot = getRectAsImage((1920,0,3840,1080))
+        ##Using getRectAsImage to capture the right-hand screen on a dual screen setup at 1920x1080
         ##Creating screenshot variable and capturing screenshot with ImageGrab.grab() method with display parameters (x origin, y origin, resolution)
-        screenshot_width, screenshot_height = screenshot.size ##Getting dimensiosn
+        ##screenshot.show()
+        ##DIAGNOSTIC TOOL - Display screenshot
+        screenshot_width, screenshot_height = screenshot.size ##Getting dimensions
         print("Grabbing dimensions from screenshot") #Collecting dimensions from raw_screenshot content
         print(screenshot_width, screenshot_height) #Printing the dimensions obtained from raw_screenshot just for kicks
         cropped_screenshot = screenshot_cropper(screenshot, screenshot_width, screenshot_height)
@@ -95,10 +83,10 @@ while True:
         screenshot_printer(saved_screenshot)
         ##Passing saved_screenshot to screenshot_printer() for printing
         ##print("Ready to take the next screenshot!")
-        ##Sending recorded screenshot to default printer
-        ##print(saved_screenshot)
-        ##show_image = Image.open(saved_screenshot) #Loading the saved screenshot and saving it to show_image
-        ##show_image.show() #Displaying the loaded screenshot
+        ##DIAGNOSTIC TOOL - Confirming ready to print
     elif keyboard.is_pressed('q'):
+    ##If detection - Q press
         print("Hope everything worked out. See you later!")
+        ##Goodbye message
         break
+        ##Exit program
